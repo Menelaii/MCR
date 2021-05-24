@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2600876998786112402}
   - component: {fileID: 9051130562351486527}
   - component: {fileID: 5219922432417478189}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
   _generator: {fileID: 0}
+  _menu: {fileID: 0}
 --- !u!114 &9051130562351486527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +175,8 @@ MonoBehaviour:
   _ground:
     serializedVersion: 2
     m_Bits: 768
+  _rigidbody: {fileID: 9051130562351486465}
+  _collider: {fileID: 9051130562351486464}
 --- !u!95 &5219922432417478189
 Animator:
   serializedVersion: 3

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
+    [Header("Local position Rx = 1.12 , Lx = -7.6 , Y = -1.5")]
     [SerializeField] private float _velocity;
 
     private Rigidbody2D _rigidbody;

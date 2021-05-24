@@ -5,12 +5,9 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private float _roomHeight;
-    [SerializeField] private GameObject[] _rooms;
     [SerializeField] private int _roomsPerTick;
-    [SerializeField] private float _rightLadderX;//на Transform заменить
-    [SerializeField] private float _leftLadderX;//
-    [SerializeField] private float _ladderHeight;
-    [SerializeField] private Ladder _ladder;
+    [Header("чётный индекс => лестница слева")]
+    [SerializeField] private GameObject[] _rooms;
 
     private int _roomsCount;
     private int _lastRoomIndex;
@@ -30,27 +27,35 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            int randomIndex = Random.Range(0, _rooms.Length);
-            if (randomIndex == _lastRoomIndex)
+            int randomIndex = Random.Range(0, _rooms.Length - 1);
+            if(_roomsCount % 2 == 0 && randomIndex % 2 == 0)
             {
-                randomIndex = Mathf.Clamp(randomIndex++, 0, _rooms.Length);
+                randomIndex++;
+            }
+            else if(_roomsCount % 2 != 0 && randomIndex % 2 != 0)
+            {
+                randomIndex++;
+            }
+
+            if (randomIndex - _lastRoomIndex <= 1)
+            {
+                randomIndex += 2;
+            }
+
+            if (randomIndex >= _rooms.Length)
+            {
+                if (randomIndex % 2 == 0)
+                {
+                    randomIndex = 0;
+                }
+                else
+                {
+                    randomIndex = 1;
+                }
             }
 
             Vector3 spawnPosition = Vector3.up * _roomsCount * _roomHeight;
             Instantiate(_rooms[randomIndex], spawnPosition, Quaternion.identity);
-            Vector3 ladderSpawnPosition = spawnPosition;
-            ladderSpawnPosition.y -= _ladderHeight;
-
-            if (_roomsCount % 2 == 0)
-            {
-                ladderSpawnPosition.x = _rightLadderX;
-            }
-            else
-            {
-                ladderSpawnPosition.x = _leftLadderX;
-            }
-
-            Instantiate(_ladder, ladderSpawnPosition, Quaternion.identity);//
             _roomsCount++;
             _lastRoomIndex = randomIndex;
         }

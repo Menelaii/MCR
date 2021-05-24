@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 4043517179410775391}
   - component: {fileID: 4043517179410775384}
   - component: {fileID: 4043517179410775385}
-  m_Layer: 0
+  - component: {fileID: 2990372339575861756}
+  m_Layer: 10
   m_Name: SlimeObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,10 +175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
-  _path: {fileID: 4043517180815566143}
-  _renderer: {fileID: 4043517179410775389}
   _waveMovement: 0
   _waveMovementOffsetY: 0
+  _path: {fileID: 4043517180815566143}
+  _renderer: {fileID: 4043517179410775389}
 --- !u!114 &4043517179410775385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +189,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab6ca15a2b2e7e94f9c5dc044d481663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2990372339575861756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043517179410775379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc99a4ed6ae172440ac0b84641e118d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4043517180815566142

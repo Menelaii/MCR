@@ -76,7 +76,8 @@ GameObject:
   - component: {fileID: 8277809285741286091}
   - component: {fileID: 8277809285741286092}
   - component: {fileID: 8277809285741286093}
-  m_Layer: 0
+  - component: {fileID: 6404047537243304675}
+  m_Layer: 10
   m_Name: FlyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,10 +207,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _path: {fileID: 8277809287155059371}
-  _renderer: {fileID: 8277809285741286089}
   _waveMovement: 1
   _waveMovementOffsetY: 0.0075
+  _path: {fileID: 8277809287155059371}
+  _renderer: {fileID: 8277809285741286089}
 --- !u!114 &8277809285741286093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +221,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab6ca15a2b2e7e94f9c5dc044d481663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6404047537243304675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277809285741286087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc99a4ed6ae172440ac0b84641e118d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8277809287155059370

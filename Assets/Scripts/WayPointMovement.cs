@@ -42,12 +42,27 @@ public class WayPointMovement : MonoBehaviour
 
     private void NextPoint()
     {
-        _renderer.flipX = !_renderer.flipX;
+        Rotate();
 
         _currentPoint++;
         if (_currentPoint >= _points.Length)
         {
             _currentPoint = 0;
         }
+    }
+
+    private void Rotate()
+    {
+        int nextPoint = _currentPoint + 1;
+        if (nextPoint >= _points.Length)
+        {
+            nextPoint = 0;
+        }
+
+        Vector2 directionToNextPoint = _points[nextPoint].position - _points[_currentPoint].position;
+        if (directionToNextPoint.x < 0)
+            _renderer.flipX = false;
+        else
+            _renderer.flipX = true;
     }
 }

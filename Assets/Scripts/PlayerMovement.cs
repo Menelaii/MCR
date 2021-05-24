@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 100;
@@ -15,21 +14,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _checkGroundCircleRadius = 0.01f;
     [SerializeField] private LayerMask _obstacles;
     [SerializeField] private LayerMask _ground;
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private BoxCollider2D _collider;
 
-    private Rigidbody2D _rigidbody;
-    private BoxCollider2D _collider;
     private float _moveDirectionX;
     private float _skinWidth = 0.015f;
     private float _originX;
     private float _jumpRemember;
     private float _groundedRemember;
+    private Vector2 _bottomRayOrigin;
+    private Vector2 _upRayOrigin;
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
         _moveDirectionX = transform.right.x;
-
-        _collider = GetComponent<BoxCollider2D>();
         _collider.bounds.Expand(_skinWidth * -2);
         _originX = _collider.bounds.min.x;
     }
@@ -41,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
         else if (_moveDirectionX == Vector2.right.x)
             _originX = _collider.bounds.max.x;
 
-        if(GroundCheck())
+        _groundedRemember -= Time.deltaTime;
+        if (GroundCheck())
         {
             _groundedRemember = _groundedRemeberTime;
         }
@@ -59,10 +58,10 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpVelocity);
         }
 
-        Vector2 bottomRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
-        Vector2 upRayOrigin = new Vector2(_originX, _collider.bounds.max.y - _upRayHeight);
-        RaycastHit2D bottomHit = Physics2D.Raycast(bottomRayOrigin, transform.right, _rayDistance, _obstacles);
-        RaycastHit2D upHit = Physics2D.Raycast(upRayOrigin, transform.right, _rayDistance, _obstacles);
+        _bottomRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
+        _upRayOrigin = new Vector2(_originX, _collider.bounds.max.y - _upRayHeight);
+        RaycastHit2D bottomHit = Physics2D.Raycast(_bottomRayOrigin, transform.right, _rayDistance, _obstacles);
+        RaycastHit2D upHit = Physics2D.Raycast(_upRayOrigin, transform.right, _rayDistance, _obstacles);
 
         if (bottomHit || upHit)
         {
@@ -73,13 +72,20 @@ public class PlayerMovement : MonoBehaviour
 
             ChangeMoveDirectionX();
         }
-
-        ShowRaysOnScene(bottomRayOrigin, upRayOrigin);
     }
 
     private void FixedUpdate()
     {
         _rigidbody.velocity = new Vector2(_moveDirectionX * _speed * Time.fixedDeltaTime, _rigidbody.velocity.y);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(_bottomRayOrigin, _bottomRayOrigin + (Vector2)transform.right * _rayDistance);
+        Gizmos.DrawLine(_upRayOrigin, _upRayOrigin + (Vector2)transform.right * _rayDistance);
+        Vector2 origin = new Vector2(transform.position.x, _collider.bounds.min.y);//_originX
+        Gizmos.DrawWireSphere(origin, _checkGroundCircleRadius);
     }
 
     public void ChangeMoveDirectionX()
@@ -94,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool GroundCheck()
     {
-        Vector2 origin = new Vector2(_originX, _collider.bounds.min.y);
+        Vector2 origin = new Vector2(transform.position.x, _collider.bounds.min.y);//_originX
         bool grounded = Physics2D.OverlapCircle(origin, _checkGroundCircleRadius, _ground);
 
         return grounded;
@@ -104,13 +110,5 @@ public class PlayerMovement : MonoBehaviour
     {
         if (hit.transform.TryGetComponent<Box>(out Box box))
             box.Interact();
-    }
-
-    private void ShowRaysOnScene(Vector2 bottomRayOrigin, Vector2 upRayOrigin)
-    {
-        Debug.DrawLine(bottomRayOrigin, bottomRayOrigin + (Vector2)transform.right * _rayDistance, Color.red);
-        Debug.DrawLine(upRayOrigin, upRayOrigin + (Vector2)transform.right * _rayDistance, Color.red);
-        Vector2 origin = new Vector2(_originX, _collider.bounds.min.y);
-        Debug.DrawLine(origin, origin - new Vector2(0, _checkGroundCircleRadius));
     }
 }

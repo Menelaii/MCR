@@ -8,7 +8,7 @@ public class DeathZone : MonoBehaviour
     {
         if (collision.TryGetComponent<Player>(out Player player))
         {
-            Destroy(collision.gameObject);// player.Die()
+            player.Die();
         }
     }
 }
