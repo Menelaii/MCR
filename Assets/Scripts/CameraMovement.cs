@@ -5,15 +5,33 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private float _roomsHeight = 5;
+    [SerializeField] private float _relocateSpeed;
 
+    private Vector2 _newPosition;
+    private Coroutine _previousTask;
 
     public void OnLadderPassed()
     {
-        SetPositionOnNextStage();
+        if (_previousTask != null)
+            StopCoroutine(_previousTask);
+
+        _newPosition = new Vector3(transform.position.x, transform.position.y + _roomsHeight, transform.position.z);
+        _previousTask = StartCoroutine(Relocate());
     }
 
-    private void SetPositionOnNextStage()
+    private IEnumerator Relocate()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + _roomsHeight, transform.position.z);
+        float t = 0;
+        while (true)
+        {
+            t += _relocateSpeed;
+            Vector2 newPosition = Vector3.Lerp(transform.position, _newPosition, t * Time.deltaTime);
+            transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+
+            if (t == 1)
+                break;
+
+            yield return null;
+        }
     }
 }

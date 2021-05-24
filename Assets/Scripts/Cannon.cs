@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    [SerializeField] private bool _reactOnlyOnJump;
     [SerializeField] private float _cooldown;
     [SerializeField] private float _cooldownSpread;
     [SerializeField] private float _bulletSpeed;
+    [SerializeField] private float _workTimeWithoutHit;
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private LayerMask _playerMask;
     [SerializeField] private float _checkRayLength;
 
     private float _timer;
+    private float _hitRemember;
 
     private void Update()
     {
-        var hit = Physics2D.Raycast(transform.position, transform.right * -1, _checkRayLength, _playerMask);
-        if(!hit && !_reactOnlyOnJump)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right * -1, _checkRayLength, _playerMask);
+        _hitRemember -= Time.deltaTime;
+        if (hit)
         {
-            return;
-        }
-        else if (hit && _reactOnlyOnJump)
-        {
-            return;
+            _hitRemember = _workTimeWithoutHit;
         }
 
         _timer -= Time.deltaTime;
-        if(_timer <= 0)
+        if(_timer <= 0 && _hitRemember > 0)
         {
             ResetTimer();
             Bullet bullet = Instantiate(_bullet, _firePoint.position, Quaternion.identity);

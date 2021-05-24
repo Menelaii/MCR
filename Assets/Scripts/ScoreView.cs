@@ -18,7 +18,11 @@ public class ScoreView : MonoBehaviour
 
     public void OnPlayerDied()
     {
-        gameObject.GetComponent<Image>().color = Color.green;
-        //gameObject.SetActive(false);
+        Image image = gameObject.GetComponent<Image>();
+
+        if(_score > 10)
+            image.color = Color.green;
+        else
+            image.color = Color.red;
     }
 }

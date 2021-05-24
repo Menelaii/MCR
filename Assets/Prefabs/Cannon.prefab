@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 77de1efddac7fe14eb6f381bab89451e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,10 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b87f13e236edb840811757a845a0245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactOnlyOnJump: 0
   _cooldown: 1
   _cooldownSpread: 2
   _bulletSpeed: 5
+  _workTimeWithoutHit: 3
   _bullet: {fileID: 5561247205994706826, guid: 6cb2544a18ac0de4ca040a5637bd14ee, type: 3}
   _firePoint: {fileID: 8354411802447983131}
   _playerMask:
@@ -205,7 +205,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 77de1efddac7fe14eb6f381bab89451e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

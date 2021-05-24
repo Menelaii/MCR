@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roomsHeight: 5
+  _relocateSpeed: 0.01
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -569,7 +570,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.2683065
+  orthographic size: 5.753546
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1507,6 +1508,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 5440659492841195940, guid: 0ae80f07f45fe304e8afcd5b037f9ded,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5440659492841195942, guid: 0ae80f07f45fe304e8afcd5b037f9ded,
         type: 3}
       propertyPath: m_SortingOrder
@@ -1714,7 +1720,12 @@ PrefabInstance:
     - target: {fileID: 9051130562351486527, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
         type: 3}
       propertyPath: _rayDistance
-      value: 0.1
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051130562351486527, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
+        type: 3}
+      propertyPath: _upRayHeight
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9051130562351486527, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
         type: 3}
@@ -1724,7 +1735,12 @@ PrefabInstance:
     - target: {fileID: 9051130562351486527, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
         type: 3}
       propertyPath: _bottomRayHeight
-      value: 0.03
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051130562351486527, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
+        type: 3}
+      propertyPath: _middleRayHeight
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 9051130562351486527, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
         type: 3}

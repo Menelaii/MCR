@@ -7,15 +7,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed = 100;
     [SerializeField] private float _jumpVelocity = 4.4f;
     [SerializeField] private float _rayDistance = 0.1f;
-    [SerializeField] private float _bottomRayHeight = 0.1f;
-    [SerializeField] private float _upRayHeight = 0.3f;
+    [SerializeField] private float _bottomRayHeight = 0.02f;
+    [SerializeField] private float _upRayHeight = 1.2f;
+    [SerializeField] private float _middleRayHeight = 0.6f;
     [SerializeField] private float _jumpRememberTime = 0.25f;
     [SerializeField] private float _groundedRemeberTime = 0.1f;
     [SerializeField] private float _checkGroundCircleRadius = 0.01f;
     [SerializeField] private LayerMask _obstacles;
     [SerializeField] private LayerMask _ground;
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private BoxCollider2D _collider;
+    [SerializeField] private Collider2D _collider;
 
     private float _moveDirectionX;
     private float _skinWidth = 0.015f;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private float _jumpRemember;
     private float _groundedRemember;
     private Vector2 _bottomRayOrigin;
+    private Vector2 _middleRayOrigin;
     private Vector2 _upRayOrigin;
 
     private void Start()
@@ -58,17 +60,21 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpVelocity);
         }
 
+        _middleRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _middleRayHeight);
         _bottomRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
-        _upRayOrigin = new Vector2(_originX, _collider.bounds.max.y - _upRayHeight);
+        _upRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _upRayHeight);
+        RaycastHit2D middleHit = Physics2D.Raycast(_middleRayOrigin, transform.right, _rayDistance, _obstacles);
         RaycastHit2D bottomHit = Physics2D.Raycast(_bottomRayOrigin, transform.right, _rayDistance, _obstacles);
         RaycastHit2D upHit = Physics2D.Raycast(_upRayOrigin, transform.right, _rayDistance, _obstacles);
 
-        if (bottomHit || upHit)
+        if (bottomHit || upHit || middleHit)
         {
             if (bottomHit)
                 TryInteract(bottomHit);
-            if (upHit)
+            else if (upHit)
                 TryInteract(upHit);
+            else
+                TryInteract(middleHit);
 
             ChangeMoveDirectionX();
         }
@@ -84,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(_bottomRayOrigin, _bottomRayOrigin + (Vector2)transform.right * _rayDistance);
         Gizmos.DrawLine(_upRayOrigin, _upRayOrigin + (Vector2)transform.right * _rayDistance);
-        Vector2 origin = new Vector2(transform.position.x, _collider.bounds.min.y);//_originX
+        Gizmos.DrawLine(_middleRayOrigin, _middleRayOrigin + (Vector2)transform.right * _rayDistance);
+        Vector2 origin = new Vector2(transform.position.x, _collider.bounds.min.y);
         Gizmos.DrawWireSphere(origin, _checkGroundCircleRadius);
     }
 
@@ -100,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool GroundCheck()
     {
-        Vector2 origin = new Vector2(transform.position.x, _collider.bounds.min.y);//_originX
+        Vector2 origin = new Vector2(transform.position.x, _collider.bounds.min.y);
         bool grounded = Physics2D.OverlapCircle(origin, _checkGroundCircleRadius, _ground);
 
         return grounded;
