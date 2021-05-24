@@ -6,6 +6,7 @@ public class Sword : MonoBehaviour
 {
     [SerializeField] private float _coolDown;
     [SerializeField] private float _buttonPressedRememberTime;
+    [SerializeField] private float _attackRememberTime;
     [SerializeField] private Transform _center;
     [SerializeField] private float _radius;
     [SerializeField] private LayerMask _interactable;
@@ -13,6 +14,7 @@ public class Sword : MonoBehaviour
 
     private float _time;
     private float _buttonPressedRemember;
+    private float _attackRemember;
 
     public float CoolDownTime => _coolDown;
     public float CoolDown => _time;
@@ -33,7 +35,15 @@ public class Sword : MonoBehaviour
             _buttonPressedRemember = 0;
             _time = 0;
 
-            Interact();
+            _attackRemember = _attackRememberTime;
+        }
+
+        _attackRemember -= Time.deltaTime;
+        if (_attackRemember > 0)
+        {
+            _buttonPressedRemember = _buttonPressedRememberTime;
+
+            TryInteract();
             _renderer.color = Color.red; //_animator.Play("Attack");
         }
     }
@@ -44,9 +54,9 @@ public class Sword : MonoBehaviour
         Gizmos.DrawWireSphere(_center.position, _radius);
     }
 
-    private void Interact()
+    private void TryInteract()
     {
-        Collider2D collider = Physics2D.OverlapCircle(_center.position, _radius, _interactable);//trans pos
+        Collider2D collider = Physics2D.OverlapCircle(_center.position, _radius, _interactable);
         if (collider != null)
         {
             if (collider.transform.TryGetComponent<Box>(out Box box))
@@ -57,9 +67,9 @@ public class Sword : MonoBehaviour
             {
                 enemy.Interact();
             }
-            else if(collider.transform.TryGetComponent<Bullet>(out Bullet bullet))
+            else if (collider.transform.TryGetComponent<Bullet>(out Bullet bullet))
             {
-                bullet.Interact();
+                bullet.Interact(transform.GetComponentInParent<Player>().transform);
             }
         }
     }

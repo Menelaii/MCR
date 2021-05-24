@@ -1579,6 +1579,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440659492841195945, guid: 0ae80f07f45fe304e8afcd5b037f9ded,
         type: 3}
+      propertyPath: _attackRememberTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440659492841195945, guid: 0ae80f07f45fe304e8afcd5b037f9ded,
+        type: 3}
       propertyPath: _buttonPressedRememberTime
       value: 0.25
       objectReference: {fileID: 0}

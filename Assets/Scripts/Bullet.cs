@@ -23,8 +23,8 @@ public class Bullet : MonoBehaviour
         _velocity = direction * speed;
     }
 
-    public void Interact()
+    public void Interact(Transform player)
     {
-        _velocity *= -1;
+        SetVelocity(player.right, _velocity.x);
     }
 }
