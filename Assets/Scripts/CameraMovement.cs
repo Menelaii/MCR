@@ -27,10 +27,6 @@ public class CameraMovement : MonoBehaviour
             t += _relocateSpeed;
             Vector2 newPosition = Vector3.Lerp(transform.position, _newPosition, t * Time.deltaTime);
             transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
-
-            if (t == 1)
-                break;
-
             yield return null;
         }
     }

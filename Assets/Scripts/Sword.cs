@@ -15,6 +15,7 @@ public class Sword : MonoBehaviour
     private float _time;
     private float _buttonPressedRemember;
     private float _attackRemember;
+    private bool _hasInteract;
 
     public float CoolDownTime => _coolDown;
     public float CoolDown => _time;
@@ -34,6 +35,7 @@ public class Sword : MonoBehaviour
         {
             _buttonPressedRemember = 0;
             _time = 0;
+            _hasInteract = false;
 
             _attackRemember = _attackRememberTime;
         }
@@ -56,21 +58,14 @@ public class Sword : MonoBehaviour
 
     private void TryInteract()
     {
+        if (_hasInteract)
+            return;
+        
         Collider2D collider = Physics2D.OverlapCircle(_center.position, _radius, _interactable);
         if (collider != null)
         {
-            if (collider.transform.TryGetComponent<Box>(out Box box))
-            {
-                box.Interact();
-            }
-            else if (collider.transform.TryGetComponent<Enemy>(out Enemy enemy))
-            {
-                enemy.Interact();
-            }
-            else if (collider.transform.TryGetComponent<Bullet>(out Bullet bullet))
-            {
-                bullet.Interact(transform.GetComponentInParent<Player>().transform);
-            }
+            _hasInteract = true;
+            collider.transform.GetComponent<IInteractable>().Interact(this);
         }
     }
 }

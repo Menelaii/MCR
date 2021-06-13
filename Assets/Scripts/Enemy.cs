@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IInteractable
 {
-    public void Interact()
+    public virtual void Interact() { }
+
+    public virtual void Interact(Sword sword) 
     {
         Destroy(gameObject);
     }

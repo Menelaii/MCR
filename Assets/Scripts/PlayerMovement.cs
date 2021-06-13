@@ -23,9 +23,10 @@ public class PlayerMovement : MonoBehaviour
     private float _originX;
     private float _jumpRemember;
     private float _groundedRemember;
-    private Vector2 _bottomRayOrigin;
-    private Vector2 _middleRayOrigin;
-    private Vector2 _upRayOrigin;
+
+    private Vector2 _bottomRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
+    private Vector2 _middleRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _middleRayHeight);
+    private Vector2 _upRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _upRayHeight);
 
     private void Start()
     {
@@ -60,9 +61,9 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpVelocity);
         }
 
-        _middleRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _middleRayHeight);
-        _bottomRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
-        _upRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _upRayHeight);
+        //_middleRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _middleRayHeight);
+        //_bottomRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
+        //_upRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _upRayHeight);
         RaycastHit2D middleHit = Physics2D.Raycast(_middleRayOrigin, transform.right, _rayDistance, _obstacles);
         RaycastHit2D bottomHit = Physics2D.Raycast(_bottomRayOrigin, transform.right, _rayDistance, _obstacles);
         RaycastHit2D upHit = Physics2D.Raycast(_upRayOrigin, transform.right, _rayDistance, _obstacles);

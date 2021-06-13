@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2906e11c027ad41be170c7cb660a0b, type: 3}
+  m_Name: Tower0
+  m_EditorClassIdentifier: 
+  _roomHeight: 5
+  _rooms:
+  - {fileID: 1192840794689743110, guid: c70149c83efeb484fb9b2ff6d09333af, type: 3}
+  - {fileID: 930825137173826723, guid: a5b3688fb2c25e44f97eb9adfa8610a1, type: 3}
+  - {fileID: 4409833275350835931, guid: a9227b7898312944b8e8466cb7c9f384, type: 3}
+  - {fileID: 6318911654526751520, guid: bcd438590b1aefb4fbd53c86fcd0bf8f, type: 3}
+  - {fileID: 33746008776730528, guid: 8634709169c5c434692234ee485a79fe, type: 3}
+  - {fileID: 1934992377731674322, guid: 22f4f8c3b4b141a438461085659e8f86, type: 3}
