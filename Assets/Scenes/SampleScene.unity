@@ -308,12 +308,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ca07a198f002b4fbf2eedf6eedcd33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startDifficulty: 1
+  _startDifficulty: 0
   _roomsOnStart: 1
   _roomsPerTick: 1
-  _roomsToIncreaseDifficulty: 2
-  _roomsToBonus: 0
+  _roomsToIncreaseDifficulty: 1
   _container: {fileID: 11400000, guid: c1e87a3ce77afa946ab15894a2d60edf, type: 2}
+  _lastRoom: {fileID: 1725519117}
 --- !u!4 &339351071
 Transform:
   m_ObjectHideFlags: 0
@@ -1326,6 +1326,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 1575786861}
   _ability: {fileID: 777647288}
+--- !u!114 &1725519117 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 752507955951651869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a35e1901c77b841a2f38e759978e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1806639003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1725,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
+        type: 3}
+      propertyPath: _isLadderOnRight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4383232947834653200, guid: 77b7c814db63aa84b9c6951368ed18f2,
         type: 3}
       propertyPath: m_SortingOrder
