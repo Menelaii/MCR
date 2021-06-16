@@ -578,6 +578,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &622402361 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 852381585179484441, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
+    type: 3}
+  m_PrefabInstance: {fileID: 852381584790377665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &622402362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622402361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3020ff2dc265740ac3332426464fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rayDistance: 11
+  _mask:
+    serializedVersion: 2
+    m_Bits: 1024
+  _playerMovement: {fileID: 622402363}
+--- !u!114 &622402363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 852381585179484440, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
+    type: 3}
+  m_PrefabInstance: {fileID: 852381584790377665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622402361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b43a387a126e642afaa6b581a93045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &745906085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1889,11 @@ PrefabInstance:
       propertyPath: _scoreView
       value: 
       objectReference: {fileID: 2020985383}
+    - target: {fileID: 852381585179484443, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
+        type: 3}
+      propertyPath: _alarmClock
+      value: 
+      objectReference: {fileID: 622402362}
     - target: {fileID: 852381585179484443, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
         type: 3}
       propertyPath: _abilityCooldownView

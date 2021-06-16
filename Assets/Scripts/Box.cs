@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Box : MonoBehaviour, IInteractable
+public class Box : MonoBehaviour, IInteractableWithTouch, IInteractableWithSword
 {
     [SerializeField] private bool _destroyable;
     [SerializeField] private int _touchCountToDestroy;
@@ -13,17 +13,14 @@ public class Box : MonoBehaviour, IInteractable
     [SerializeField] private Coin _coin;
 
     private int _touchCount;
-
     public void Interact()
     {
         TryToDestroy();
     }
-
     public void Interact(Sword sword)
     {
         TryToDestroy();
     }
-
     private void TryToDestroy()
     {
         _touchCount++;
@@ -33,7 +30,6 @@ public class Box : MonoBehaviour, IInteractable
         Destroy(gameObject);
         SpawnItem();
     }
-
     private void SpawnItem()
     {
         if (_spikesInside)

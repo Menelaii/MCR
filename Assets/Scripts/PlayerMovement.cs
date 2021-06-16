@@ -24,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private float _jumpRemember;
     private float _groundedRemember;
 
-    private Vector2 _bottomRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
-    private Vector2 _middleRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _middleRayHeight);
-    private Vector2 _upRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _upRayHeight);
+    public Vector2 BottomRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
+    public Vector2 MiddleRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _middleRayHeight);
+    public Vector2 UpRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _upRayHeight);
 
     private void Start()
     {
@@ -61,19 +61,16 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpVelocity);
         }
 
-        //_middleRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _middleRayHeight);
-        //_bottomRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
-        //_upRayOrigin = new Vector2(_originX, _collider.bounds.min.y + _upRayHeight);
-        RaycastHit2D middleHit = Physics2D.Raycast(_middleRayOrigin, transform.right, _rayDistance, _obstacles);
-        RaycastHit2D bottomHit = Physics2D.Raycast(_bottomRayOrigin, transform.right, _rayDistance, _obstacles);
-        RaycastHit2D upHit = Physics2D.Raycast(_upRayOrigin, transform.right, _rayDistance, _obstacles);
+        RaycastHit2D middleHit = Physics2D.Raycast(MiddleRayOrigin, transform.right, _rayDistance, _obstacles);
+        RaycastHit2D bottomHit = Physics2D.Raycast(BottomRayOrigin, transform.right, _rayDistance, _obstacles);
+        RaycastHit2D upHit = Physics2D.Raycast(UpRayOrigin, transform.right, _rayDistance, _obstacles);
 
         if (bottomHit || upHit || middleHit)
         {
-            if (bottomHit)
-                TryInteract(bottomHit);
-            else if (upHit)
+            if (upHit)
                 TryInteract(upHit);
+            else if (bottomHit)
+                TryInteract(bottomHit);
             else
                 TryInteract(middleHit);
 
@@ -89,9 +86,9 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(_bottomRayOrigin, _bottomRayOrigin + (Vector2)transform.right * _rayDistance);
-        Gizmos.DrawLine(_upRayOrigin, _upRayOrigin + (Vector2)transform.right * _rayDistance);
-        Gizmos.DrawLine(_middleRayOrigin, _middleRayOrigin + (Vector2)transform.right * _rayDistance);
+        Gizmos.DrawLine(BottomRayOrigin, BottomRayOrigin + (Vector2)transform.right * _rayDistance);
+        Gizmos.DrawLine(UpRayOrigin, UpRayOrigin + (Vector2)transform.right * _rayDistance);
+        Gizmos.DrawLine(MiddleRayOrigin, MiddleRayOrigin + (Vector2)transform.right * _rayDistance);
         Vector2 origin = new Vector2(transform.position.x, _collider.bounds.min.y);
         Gizmos.DrawWireSphere(origin, _checkGroundCircleRadius);
     }
@@ -116,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void TryInteract(RaycastHit2D hit)
     {
-        if (hit.transform.TryGetComponent<Box>(out Box box))
-            box.Interact();
+        if (hit.transform.TryGetComponent<IInteractableWithTouch>(out IInteractableWithTouch IInteractable))
+            IInteractable.Interact();
     }
 }

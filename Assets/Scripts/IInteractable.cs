@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractable
+public interface IInteractableWithTouch
+{
+    void Interact();
+}
+
+public interface IInteractableWithSword
 {
     void Interact(Sword sword);
+}
 
-    void Interact();
+public interface ISleeping
+{
+    void WakeUp();
+    void Sleep();
+    IEnumerator WaitForSleep(float awakenTime);
 }

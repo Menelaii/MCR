@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Coin : MonoBehaviour, IInteractable
+public class Coin : MonoBehaviour, IInteractableWithTouch
 {
     public void Interact()
     {

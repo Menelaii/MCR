@@ -40,8 +40,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8354411801444756114}
   - component: {fileID: 8354411801444756113}
+  - component: {fileID: 5646601398989382475}
   - component: {fileID: 8354411801444756112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,6 +114,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &5646601398989382475
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354411801444756111}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.010948539, y: 0.017517656}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1792724, y: 1.2011695}
+  m_EdgeRadius: 0
 --- !u!114 &8354411801444756112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,14 +147,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8354411801444756111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b87f13e236edb840811757a845a0245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 1
   _cooldownSpread: 2
-  _workTimeWithoutHit: 3
+  _awakenTime: 30
   _bullet: {fileID: 5561247205994706826, guid: 6cb2544a18ac0de4ca040a5637bd14ee, type: 3}
   _firePoint: {fileID: 1438335064056477083}
   _playerMask:
@@ -136,6 +163,5 @@ MonoBehaviour:
   _checkRayLength: 10
   _stopShootingRayLength: 3
   _bulletSpeed: 5
-  _bulletNotInteractable: 0
   _bulletDestroySword: 0
   _randomType: 0

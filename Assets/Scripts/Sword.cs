@@ -65,7 +65,7 @@ public class Sword : MonoBehaviour
         if (collider != null)
         {
             _hasInteract = true;
-            collider.transform.GetComponent<IInteractable>().Interact(this);
+            collider.transform.GetComponent<IInteractableWithSword>().Interact(this);
         }
     }
 }

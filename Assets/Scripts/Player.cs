@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private CameraMovement _camera;
     [SerializeField] private LevelGenerator _generator;
+    [SerializeField] private RayAlarmClock _alarmClock;
     [SerializeField] private GameOverMenu _menu;
     [SerializeField] private ScoreView _scoreView;
     [SerializeField] private CoinsView _coinsView;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
         OnLadderPassed += _camera.OnLadderPassed;
         OnLadderPassed += _generator.OnLadderPassed;
         OnLadderPassed += _scoreView.OnLadderPassed;
+        OnLadderPassed += _alarmClock.OnLadderPassed;
     }
 
     private void OnDisable()
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
         OnLadderPassed -= _camera.OnLadderPassed;
         OnLadderPassed -= _generator.OnLadderPassed;
         OnLadderPassed -= _scoreView.OnLadderPassed;
+        OnLadderPassed -= _alarmClock.OnLadderPassed;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon : MonoBehaviour
+public class Cannon : MonoBehaviour, ISleeping
 {
     [SerializeField] private float _cooldown;
     [SerializeField] private float _cooldownSpread;
-    [SerializeField] private float _workTimeWithoutHit;
+    [SerializeField] private float _awakenTime;
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private LayerMask _playerMask;
@@ -15,31 +15,20 @@ public class Cannon : MonoBehaviour
 
     [Header("Bullet Type")]
     [SerializeField] private float _bulletSpeed;
-    [SerializeField] private bool _bulletNotInteractable;
     [SerializeField] private bool _bulletDestroySword;
     [SerializeField] private bool _randomType;
 
     private float _timer;
-    private float _hitRemember;
 
     private void Update()
     {
         if (Physics2D.Raycast(transform.position, transform.right * -1, _stopShootingRayLength, _playerMask))
         {
-            _hitRemember = 0;
-            _timer = 0;
-            return;
-        }
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right * -1, _checkRayLength, _playerMask);
-        _hitRemember -= Time.deltaTime;
-        if (hit)
-        {
-            _hitRemember = _workTimeWithoutHit;
+            Sleep();
         }
 
         _timer -= Time.deltaTime;
-        if(_timer <= 0 && _hitRemember > 0)
+        if(_timer <= 0)
         {
             Fire();
         }
@@ -69,20 +58,30 @@ public class Cannon : MonoBehaviour
             if (random % 2 == 0)
             {
                 _bulletDestroySword = true;
-                _bulletNotInteractable = false;
-            }
-            else if (random < 6)//доля обычных, вывести в переменную
-            {
-                _bulletDestroySword = false;
-                _bulletNotInteractable = false;
             }
             else
             {
                 _bulletDestroySword = false;
-                _bulletNotInteractable = true;
             }
         }
 
-        bullet.SetStats(_bulletNotInteractable, _bulletDestroySword);
+        bullet.SetStats(_bulletDestroySword);
+    }
+
+    public void WakeUp()
+    {
+        StartCoroutine(WaitForSleep(_awakenTime));
+        enabled = true;
+    }
+
+    public void Sleep()
+    {
+        enabled = false;
+    }
+
+    public IEnumerator WaitForSleep(float awakenTime)
+    {
+        yield return new WaitForSeconds(_awakenTime);
+        Sleep();
     }
 }
