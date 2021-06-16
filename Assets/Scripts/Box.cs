@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Box : MonoBehaviour, IInteractableWithTouch, IInteractableWithSword
 {
+    [Header("Box Type")]
     [SerializeField] private bool _destroyable;
     [SerializeField] private int _touchCountToDestroy;
     [SerializeField] private bool _spikesInside;
