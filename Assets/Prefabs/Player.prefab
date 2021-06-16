@@ -99,8 +99,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0036427975, y: 0.5732219}
-  m_Size: {x: 0.7425723, y: 1.1241293}
+  m_Offset: {x: 0.0036427975, y: 0.5748297}
+  m_Size: {x: 0.7425723, y: 1.1209137}
   m_Direction: 0
 --- !u!50 &852381585865127800
 Rigidbody2D:
@@ -137,11 +137,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
   _generator: {fileID: 0}
+  _alarmClock: {fileID: 0}
   _menu: {fileID: 0}
   _scoreView: {fileID: 0}
   _coinsView: {fileID: 0}
   _abilityCooldownView: {fileID: 0}
   _stats: {fileID: 11400000, guid: bee629e1d4203db439f75a9f15396092, type: 2}
+  _wakeUpRayDistance: 0
 --- !u!114 &852381585179484440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440659492841195942, guid: 0ae80f07f45fe304e8afcd5b037f9ded,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5440659492841195943, guid: 0ae80f07f45fe304e8afcd5b037f9ded,
         type: 3}

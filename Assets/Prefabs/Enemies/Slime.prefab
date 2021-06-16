@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 368543389579951487, guid: 025967101a2f30d41a7bf55f4646508f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.64705884}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,6 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementScript: {fileID: 4043517179410775384}
   _awakenTime: 30
+  _destroySwordOnInteract: 0
+  _acid: {r: 0, g: 1, b: 0.050980393, a: 0.64705884}
 --- !u!95 &2268087772399461297
 Animator:
   serializedVersion: 3

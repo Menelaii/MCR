@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ca07a198f002b4fbf2eedf6eedcd33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startDifficulty: 0
+  _startDifficulty: 1
   _roomsOnStart: 1
   _roomsPerTick: 1
   _roomsToIncreaseDifficulty: 4

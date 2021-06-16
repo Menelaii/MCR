@@ -79,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
         type: 3}
       propertyPath: _difficulty
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
         type: 3}
@@ -177,12 +177,12 @@ PrefabInstance:
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9
+      value: -1.54
       objectReference: {fileID: 0}
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.492
+      value: -3.52
       objectReference: {fileID: 0}
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}
@@ -239,12 +239,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 4007337365781050896}
     m_Modifications:
     - target: {fileID: 878484655, guid: 5e0ffafe2e6e7a242b5dead3541b28c2, type: 3}
+      propertyPath: _coinInside
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 878484655, guid: 5e0ffafe2e6e7a242b5dead3541b28c2, type: 3}
       propertyPath: _destroyable
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 878484655, guid: 5e0ffafe2e6e7a242b5dead3541b28c2, type: 3}
       propertyPath: _spikesInside
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}
@@ -259,7 +263,7 @@ PrefabInstance:
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.492
+      value: -3.52
       objectReference: {fileID: 0}
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}
@@ -319,6 +323,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354411801444756112, guid: 41e3e26507e5e07489d781d7edd67fc1,
+        type: 3}
+      propertyPath: _cooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8354411801444756114, guid: 41e3e26507e5e07489d781d7edd67fc1,
         type: 3}

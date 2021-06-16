@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5224186001147127944}
     m_Modifications:
+    - target: {fileID: 2990372339575861756, guid: 62c89c119eed50447ba9cd57592ed4c0,
+        type: 3}
+      propertyPath: _acid.b
+      value: 0.10849059
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990372339575861756, guid: 62c89c119eed50447ba9cd57592ed4c0,
+        type: 3}
+      propertyPath: _acid.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990372339575861756, guid: 62c89c119eed50447ba9cd57592ed4c0,
+        type: 3}
+      propertyPath: _acid.r
+      value: 0.38364032
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990372339575861756, guid: 62c89c119eed50447ba9cd57592ed4c0,
+        type: 3}
+      propertyPath: _destroySwordOnInteract
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4043517179410575877, guid: 62c89c119eed50447ba9cd57592ed4c0,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -76,6 +76,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742423229714517997}
     m_Modifications:
+    - target: {fileID: 2990372339575861756, guid: 62c89c119eed50447ba9cd57592ed4c0,
+        type: 3}
+      propertyPath: _destroySwordOnInteract
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4043517179410575877, guid: 62c89c119eed50447ba9cd57592ed4c0,
         type: 3}
       propertyPath: m_LocalPosition.x
