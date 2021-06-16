@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Coin : MonoBehaviour, IInteractableWithTouch
+public class Coin : MonoBehaviour
 {
-    public void Interact()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if(collision.TryGetComponent<Player>(out Player player))
+        {
+            player.TakeCoin(this);
+        }
     }
-
-    public void Interact(Sword sword) { }
 }

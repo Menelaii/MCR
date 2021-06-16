@@ -11,19 +11,23 @@ public class Bullet : MonoBehaviour, IInteractableWithSword
 
     private Vector2 _velocity;
     private bool _destroySwordOnInteract;
+
     private void FixedUpdate()
     {
         _rigidBody.velocity = _velocity;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
     }
+
     public void SetVelocity(Vector2 direction, float speed)
     {
         _velocity = direction * speed;
         Rotate(direction);
     }
+
     public void SetStats(bool destroySwordOnInteract)
     {
         _destroySwordOnInteract = destroySwordOnInteract;
@@ -31,6 +35,7 @@ public class Bullet : MonoBehaviour, IInteractableWithSword
         if (_destroySwordOnInteract)
             _renderer.color = _acid;
     }
+
     private void Rotate(Vector2 direction)
     {
         if (direction == Vector2.left)
@@ -38,6 +43,7 @@ public class Bullet : MonoBehaviour, IInteractableWithSword
         else
             _renderer.flipX = true;
     }
+
     public void Interact(Sword sword)
     {
         if (_destroySwordOnInteract)

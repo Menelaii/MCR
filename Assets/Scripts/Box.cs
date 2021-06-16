@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class Box : MonoBehaviour, IInteractableWithTouch, IInteractableWithSword
 {
+    [SerializeField] private DeathZone _spikes;
+    [SerializeField] private Coin _coin;
+
     [Header("Box Type")]
     [SerializeField] private bool _destroyable;
     [SerializeField] private int _touchCountToDestroy;
     [SerializeField] private bool _spikesInside;
     [SerializeField] private bool _coinInside;
 
-    [SerializeField] private DeathZone _spikes;
-    [SerializeField] private Coin _coin;
-
     private int _touchCount;
+
     public void Interact()
     {
         TryToDestroy();
     }
+
     public void Interact(Sword sword)
     {
         TryToDestroy();
     }
+
     private void TryToDestroy()
     {
         _touchCount++;
@@ -31,6 +34,7 @@ public class Box : MonoBehaviour, IInteractableWithTouch, IInteractableWithSword
         Destroy(gameObject);
         SpawnItem();
     }
+
     private void SpawnItem()
     {
         if (_spikesInside)

@@ -25,32 +25,41 @@ public class LevelGenerator : MonoBehaviour
         _rooms = _container.GetRooms();
         _spawnList = new List<Room>();
         _difficulty = _startDifficulty;
-        _currentDifficulty = _difficulty;
+        _maxCurrentDifficultyOfRooms = _difficulty;
         SpawnRooms(_roomsOnStart);
     }
 
-    public void OnLadderPassed()
+    private void SpawnRooms(int count)
     {
-        if (_spawnedRooms >= _roomsToIncreaseDifficulty)
+        for (int i = 0; i < count; i++)
         {
-            _difficulty++;
-            _roomsToIncreaseDifficulty += _roomsToIncreaseDifficulty;
+            TryReformSpawnList();
+            SpawnRoomFromList();
         }
-
-        SpawnRooms(_roomsPerTick);
     }
 
     private void TryReformSpawnList()
     {
-        if (_spawnList.Count == 0 || _currentDifficulty != _difficulty)
+        if (_spawnList.Count == 0 || _maxCurrentDifficultyOfRooms <= _difficulty)
         {
             ReformSpawnList();
         }
     }
 
+    private void SpawnRoomFromList()
+    {
+        Room roomToSpawn = _spawnList[0];
+        _spawnList.RemoveAt(0);
+
+        Vector3 spawnPosition = Vector3.up * (_spawnedRooms + 1) * _roomHeight;
+        _lastRoom = Instantiate(roomToSpawn, spawnPosition, Quaternion.identity);
+
+        _spawnedRooms++;
+    }
+
     private void ReformSpawnList()
     {
-        _currentDifficulty = _difficulty;
+        _maxCurrentDifficultyOfRooms = _difficulty;
         _spawnList.Clear();
         for (int i = 0; i < _rooms.Length; i++)
         {
@@ -63,11 +72,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void TryAddToSpawnList(Room room)
     {
-        if (room.NeedSword && _playerHaveSword == false)
-        {
-            return;
-        }
-        else if(_currentDifficulty >= room.Difficulty)
+        if(_maxCurrentDifficultyOfRooms >= room.Difficulty)
         {
             _spawnList.Add(room);
         }
@@ -92,39 +97,48 @@ public class LevelGenerator : MonoBehaviour
 
         var leftLadderRooms = _spawnList.Where(room => room.IsLadderOnRight == false).ToArray();
 
+        int evenCounter = 0;
+        int oddCounter = 0;
         for (int i = 0; i < _spawnList.Count; i++)
         {
-            int evenCounter = 0;
-            int oddCounter = 0;
-            if(i % 2 == 0)
+            if (_lastRoom.IsLadderOnRight)
             {
-                sortedList.Add(leftLadderRooms[evenCounter]);
-                evenCounter++;
+                if (i % 2 == 0)
+                {
+                    sortedList.Add(leftLadderRooms[evenCounter]);
+                    evenCounter++;
+                }
+                else
+                {
+                    sortedList.Add(rightLadderRooms[oddCounter]);
+                    oddCounter++;
+                }
             }
             else
             {
-                sortedList.Add(rightLadderRooms[oddCounter]);
-                oddCounter++;
+                if (i % 2 == 0)
+                {
+                    sortedList.Add(rightLadderRooms[oddCounter]);
+                    oddCounter++;
+                }
+                else
+                {
+                    sortedList.Add(leftLadderRooms[evenCounter]);
+                    evenCounter++;
+                }
             }
         }
         _spawnList = sortedList;
     }
 
-    private void SpawnRoomFromList()
+    public void OnLadderPassed()
     {
-        Room roomToSpawn = _spawnList[0];
-        _spawnList.RemoveAt(0);
-        Vector3 spawnPosition = Vector3.up * (_spawnedRooms + 1) * _roomHeight;
-        Instantiate(roomToSpawn, spawnPosition, Quaternion.identity);
-        _spawnedRooms++;
-    }
-
-    private void SpawnRooms(int count)
-    {
-        for (int i = 0; i < count; i++)
+        if (_spawnedRooms >= _roomsToIncreaseDifficulty)
         {
-            TryReformSpawnList();
-            SpawnRoomFromList();
+            _difficulty++;
+            _roomsToIncreaseDifficulty += _roomsToIncreaseDifficulty;
         }
+
+        SpawnRooms(_roomsPerTick);
     }
 }

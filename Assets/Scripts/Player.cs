@@ -64,9 +64,4 @@ public class Player : MonoBehaviour
         _stats.Coins++;
         OnCoinTaken?.Invoke();
     }
-
-    private void ShootWakeUpRay()
-    {
-        Physics2D.Raycast(transform.position, transform.right, _wakeUpRayDistance);
-    }
 }
