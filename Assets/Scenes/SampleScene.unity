@@ -1762,6 +1762,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
         type: 3}
+      propertyPath: _type
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
+        type: 3}
       propertyPath: _difficulty
       value: 0
       objectReference: {fileID: 0}
@@ -1878,6 +1883,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 852381585179484442, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
+        type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 852381585179484443, guid: 5e6aaca92c89d3d4ba5cbabb6397f60e,
         type: 3}

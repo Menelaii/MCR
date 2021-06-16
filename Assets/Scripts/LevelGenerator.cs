@@ -67,7 +67,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         ShuffleSpawnList();
-        SortSpawnList();
+        SortSpawnList();                        
     }
 
     private void TryAddToSpawnList(Room room)

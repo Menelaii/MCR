@@ -44,6 +44,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 930825137173826723, guid: a5b3688fb2c25e44f97eb9adfa8610a1,
         type: 3}
+      propertyPath: _difficulty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 930825137173826723, guid: a5b3688fb2c25e44f97eb9adfa8610a1,
+        type: 3}
       propertyPath: _isLadderOnRight
       value: 0
       objectReference: {fileID: 0}
