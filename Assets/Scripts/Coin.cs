@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Coin : MonoBehaviour, IInteractable
+public class Coin : MonoBehaviour
 {
-    public void Interact()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        if (other.transform.TryGetComponent<Player>(out Player player))
+        {
+            player.TakeCoin(this);
+        }
     }
-
-    public void Interact(Sword sword) { }
 }

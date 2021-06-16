@@ -10,4 +10,9 @@ public class Enemy : MonoBehaviour, IInteractable
     {
         Destroy(gameObject);
     }
+
+    public void WakeUp()
+    {
+        GetComponent<WayPointMovement>().enabled = true;
+    }
 }
