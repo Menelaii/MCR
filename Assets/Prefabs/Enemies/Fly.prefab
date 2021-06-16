@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 8277809285741286092}
   - component: {fileID: 8277809285741286093}
   - component: {fileID: 6404047537243304675}
-  - component: {fileID: 4062981590293870399}
+  - component: {fileID: 3497702454817190377}
   m_Layer: 10
   m_Name: FlyObject
   m_TagString: Untagged
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.075, y: 1.1}
+    oldSize: {x: 1.4333333, y: 1.4666667}
     newSize: {x: 0.43, y: 0.44}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementScript: {fileID: 8277809285741286092}
   _awakenTime: 30
---- !u!95 &4062981590293870399
+--- !u!95 &3497702454817190377
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ Animator:
   m_GameObject: {fileID: 8277809285741286087}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5f573956244e7144b954882824d18e1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
