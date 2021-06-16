@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 4043517179410575877, guid: 62c89c119eed50447ba9cd57592ed4c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.38
+      value: -1.06
       objectReference: {fileID: 0}
     - target: {fileID: 4043517179410775389, guid: 62c89c119eed50447ba9cd57592ed4c0,
         type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4043517179410775389, guid: 62c89c119eed50447ba9cd57592ed4c0,
         type: 3}
@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 4043517181310363909, guid: 62c89c119eed50447ba9cd57592ed4c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.06
+      value: -6.38
       objectReference: {fileID: 0}
     - target: {fileID: 4043517181310363909, guid: 62c89c119eed50447ba9cd57592ed4c0,
         type: 3}
@@ -248,6 +248,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
+        type: 3}
+      propertyPath: _type
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
         type: 3}
       propertyPath: _difficulty

@@ -78,6 +78,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
         type: 3}
+      propertyPath: _type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805858618359257573, guid: 77b7c814db63aa84b9c6951368ed18f2,
+        type: 3}
       propertyPath: _difficulty
       value: 1
       objectReference: {fileID: 0}
@@ -226,6 +231,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6942940259363226256}
     m_Modifications:
     - target: {fileID: 878484655, guid: 5e0ffafe2e6e7a242b5dead3541b28c2, type: 3}
+      propertyPath: _coinInside
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 878484655, guid: 5e0ffafe2e6e7a242b5dead3541b28c2, type: 3}
       propertyPath: _destroyable
       value: 1
       objectReference: {fileID: 0}
@@ -241,12 +250,12 @@ PrefabInstance:
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.71
+      value: -5.77
       objectReference: {fileID: 0}
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.51
+      value: -3.49
       objectReference: {fileID: 0}
     - target: {fileID: 3491692152559288682, guid: 5e0ffafe2e6e7a242b5dead3541b28c2,
         type: 3}

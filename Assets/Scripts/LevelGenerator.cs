@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private int _roomsPerTick;
     [SerializeField] private int _roomsToIncreaseDifficulty;
     [SerializeField] private RoomsContainer _container;
-    [SerializeField] private Room _lastRoom;
+    [SerializeField] private Room _lastSpawnedRoom;
 
     private Room[] _rooms;
     private List<Room> _spawnList;
@@ -52,7 +52,7 @@ public class LevelGenerator : MonoBehaviour
         _spawnList.RemoveAt(0);
 
         Vector3 spawnPosition = Vector3.up * (_spawnedRooms + 1) * _roomHeight;
-        _lastRoom = Instantiate(roomToSpawn, spawnPosition, Quaternion.identity);
+        _lastSpawnedRoom = Instantiate(roomToSpawn, spawnPosition, Quaternion.identity);
 
         _spawnedRooms++;
     }
@@ -72,7 +72,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void TryAddToSpawnList(Room room)
     {
-        if(_maxCurrentDifficultyOfRooms >= room.Difficulty)
+        if(_maxCurrentDifficultyOfRooms >= room.Difficulty && _lastSpawnedRoom.Type != room.Type)
         {
             _spawnList.Add(room);
         }
@@ -101,7 +101,7 @@ public class LevelGenerator : MonoBehaviour
         int oddCounter = 0;
         for (int i = 0; i < _spawnList.Count; i++)
         {
-            if (_lastRoom.IsLadderOnRight)
+            if (_lastSpawnedRoom.IsLadderOnRight)
             {
                 if (i % 2 == 0)
                 {

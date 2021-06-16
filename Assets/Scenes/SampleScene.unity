@@ -313,7 +313,7 @@ MonoBehaviour:
   _roomsPerTick: 1
   _roomsToIncreaseDifficulty: 4
   _container: {fileID: 11400000, guid: c1e87a3ce77afa946ab15894a2d60edf, type: 2}
-  _lastRoom: {fileID: 1725519117}
+  _lastSpawnedRoom: {fileID: 1725519117}
 --- !u!4 &339351071
 Transform:
   m_ObjectHideFlags: 0
