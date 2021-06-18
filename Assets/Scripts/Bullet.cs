@@ -19,6 +19,9 @@ public class Bullet : MonoBehaviour, IInteractableWithSword
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.TryGetComponent<IInteractableWithTouch>(out IInteractableWithTouch IInteractable))
+            IInteractable.Interact();
+        
         Destroy(gameObject);
     }
 

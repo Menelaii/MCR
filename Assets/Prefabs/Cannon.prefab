@@ -161,7 +161,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   _checkRayLength: 10
-  _stopShootingRayLength: 3
+  _stopShootingRayLength: 3.5
   _bulletSpeed: 5
   _bulletDestroySword: 0
   _randomType: 0

@@ -388,6 +388,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 8354411801444756112, guid: 41e3e26507e5e07489d781d7edd67fc1,
+        type: 3}
+      propertyPath: _randomType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8354411801444756114, guid: 41e3e26507e5e07489d781d7edd67fc1,
         type: 3}
       propertyPath: m_RootOrder
