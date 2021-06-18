@@ -15,22 +15,25 @@ public class Player : MonoBehaviour
     [SerializeField] private CoinsView _coinsView;
     [SerializeField] private AbilityCooldownView _abilityCooldownView;
     [SerializeField] private PlayerStats _stats;
-    [SerializeField] private float _wakeUpRayDistance;
 
     public UnityAction OnLadderPassed;
     public UnityAction OnPlayerDied;
-    public UnityAction OnCoinTaken;
+    public UnityAction<int> OnCoinsChanged;
+
+    public PlayerStats Stats => _stats;
 
     private void OnEnable()
     {
         OnPlayerDied += _menu.OnPlayerDied;
         OnPlayerDied += _scoreView.OnPlayerDied;
         OnPlayerDied += _abilityCooldownView.OnPlayerDied;
-        OnCoinTaken += _coinsView.OnCoinTaken;
+        OnCoinsChanged += _coinsView.OnCoinsChanged;
         OnLadderPassed += _camera.OnLadderPassed;
         OnLadderPassed += _generator.OnLadderPassed;
         OnLadderPassed += _scoreView.OnLadderPassed;
         OnLadderPassed += _alarmClock.OnLadderPassed;
+
+        OnCoinsChanged?.Invoke(_stats.Coins);
     }
 
     private void OnDisable()
@@ -38,7 +41,7 @@ public class Player : MonoBehaviour
         OnPlayerDied -= _menu.OnPlayerDied;
         OnPlayerDied -= _scoreView.OnPlayerDied;
         OnPlayerDied -= _abilityCooldownView.OnPlayerDied;
-        OnCoinTaken -= _coinsView.OnCoinTaken;
+        OnCoinsChanged -= _coinsView.OnCoinsChanged;
         OnLadderPassed -= _camera.OnLadderPassed;
         OnLadderPassed -= _generator.OnLadderPassed;
         OnLadderPassed -= _scoreView.OnLadderPassed;
@@ -49,7 +52,14 @@ public class Player : MonoBehaviour
     {
         TryUpdateRecord();
         OnPlayerDied?.Invoke();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    public void RespawnForCoins(int coinsForRespawn)
+    {
+        _stats.Coins -= coinsForRespawn;
+        OnCoinsChanged?.Invoke(_stats.Coins);
+        gameObject.SetActive(true);
     }
 
     public void TryUpdateRecord()
@@ -62,6 +72,6 @@ public class Player : MonoBehaviour
     {
         Destroy(coin.gameObject);
         _stats.Coins++;
-        OnCoinTaken?.Invoke();
+        OnCoinsChanged?.Invoke(_stats.Coins);
     }
 }

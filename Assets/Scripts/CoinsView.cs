@@ -5,17 +5,11 @@ using UnityEngine.UI;
 
 public class CoinsView : MonoBehaviour
 {
-    [SerializeField] private PlayerStats _stats;
     [SerializeField] private Text _text;
 
-    private void Start()
-    {
-        _text.text = _stats.Coins.ToString();
-    }
-
-    public void OnCoinTaken()
+    public void OnCoinsChanged(int coins)
     {
         gameObject.SetActive(true);
-        _text.text = _stats.Coins.ToString();
+        _text.text = coins.ToString();
     }
 }
