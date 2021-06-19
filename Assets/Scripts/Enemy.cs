@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Enemy : MonoBehaviour, IInteractableWithSword, ISleeping
 {
-    [SerializeField] private WayPointMovement _movementScript;
+    [SerializeField] private MonoBehaviour _movementScript;
     [SerializeField] private float _awakenTime;
     [SerializeField] private bool _destroySwordOnInteract;
     [SerializeField] private Color _acid;
@@ -28,6 +28,11 @@ public class Enemy : MonoBehaviour, IInteractableWithSword, ISleeping
 
     public void WakeUp()
     {
+        if (TryGetComponent<Animator>(out Animator animator))
+        {
+            animator.SetBool("Awake", true);
+        }
+        
         StartCoroutine(WaitForSleep(_awakenTime));
         _movementScript.enabled = true;
     }
@@ -40,6 +45,10 @@ public class Enemy : MonoBehaviour, IInteractableWithSword, ISleeping
     public IEnumerator WaitForSleep(float awakenTime)
     {
         yield return new WaitForSeconds(_awakenTime);
+        if (TryGetComponent<Animator>(out Animator animator))
+        {
+            animator.SetBool("Awake", false);
+        }
         Sleep();
     }
 }

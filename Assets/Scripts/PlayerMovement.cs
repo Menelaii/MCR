@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 BottomRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _bottomRayHeight);
     public Vector2 MiddleRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _middleRayHeight);
     public Vector2 UpRayOrigin => new Vector2(_originX, _collider.bounds.min.y + _upRayHeight);
+
+    private void OnEnable()
+    {
+        _jumpRemember = 0;
+    }
 
     private void Start()
     {
